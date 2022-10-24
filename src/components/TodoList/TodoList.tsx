@@ -18,16 +18,20 @@ export default function TodoList({ todos, setTodos }: ITodoListProps) {
   }
 
   function editTodoItem(id: string) {
-    const updateTodos = [...todos].map((todo) => {
-      if (todo.id === id) {
-        todo.name = todoEditingItem;
-      }
-      return todo;
-    });
-
-    setTodos(updateTodos);
+    if(todoEditingItem.trim().length !== 0){
+      const updateTodos = [...todos].map((todo) => {
+        if (todo.id === id) {
+          todo.name = todoEditingItem;
+        }
+        return todo;
+      });
+  
+      setTodos(updateTodos);
+      
+    }
     setTodoIdItem("");
-    setTodoEditingItem("");
+      setTodoEditingItem("");
+    
   }
 
   function cancelEditTodoItem() {
